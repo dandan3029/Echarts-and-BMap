@@ -9,6 +9,9 @@ module.exports = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
     },
+    externals: {
+        'BMap': 'BMap'
+    },
     // mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
