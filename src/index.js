@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import './index.scss';
-import BusRouteMap from './busRouteMap';
+
 import * as serviceWorker from './serviceWorker';
 
-// ReactDOM.render(<App />, document.getElementById('root'));
+import BusRouteMap from './busRouteMap';
+import PopulationDensity from './populationDensity';
+import BusRouteMapSpecial from './busRouteMapSpecial';
+import DrawPolygonOnMap from './drawPolygonOnMap';
+import BaiduMap from './baidumap';
 
-ReactDOM.render(<BusRouteMap />, document.getElementById('root'));
+ReactDOM.render(<BaiduMap />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

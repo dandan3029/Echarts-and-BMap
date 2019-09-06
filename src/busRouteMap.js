@@ -14,25 +14,19 @@ class BusRouteMap extends Component {
         axios.get('/api/data/asset/data/lines-bus.json')
             .then(function (response) {
                 var data = response.data;
-                // console.log(data);
+                console.log(data[0].length);
                 // data 的数据结构
                 // [
-                //     [
-                //         [ 9,7,6,43,534],  //0
-                //         [1,2,3,9,4,5,6,7,8], // 1
-                //         ...
-                //         [1,2,3,4,] // 99
-                //     ],
-                //     [],
-                //     [],
-                //     ...
-                //     []
-                // ]  // 长度为1543
+                //    [ 9,7,6,43,534],  //0: 84
+                //    [1,2,3,9,4,5,6,7,8], // 1: 158, 104, 154
+                //    ...
+                //    [1,2,3,4,] // 1543: 104
+                // ]  // 长度为1543 数组中的每一项代表一条线路
                 var busLines = [].concat.apply([], data.map(function (busLine, idx) {
                     var prevPt;
                     var points = [];
                     for (var i = 0; i < busLine.length; i += 2) {
-                        var pt = [busLine[i], busLine[i + 1]];
+                        var pt = [busLine[i], busLine[i + 1]];  // 一个坐标点
                         if (i > 0) {
                             pt = [
                                 prevPt[0] + pt[0],
@@ -171,9 +165,9 @@ class BusRouteMap extends Component {
                         progressive: 200
                     }]
                 })
-                // 获取百度地图实例，使用百度地图自带的控件
-                var bmap = echarts.getModel().getComponent('bmap').getBMap();
-                bmap.addControl(new BMap.MapTypeControl());
+                // // 获取百度地图实例，使用百度地图自带的控件
+                // var bmap = echarts.getModel().getComponent('bmap').getBMap();
+                // bmap.addControl(new BMap.MapTypeControl());
             })
             .catch(function (error) {
                 console.log(error);
